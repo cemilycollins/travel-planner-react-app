@@ -11,7 +11,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (!this.state.trips) {
+    if (this.state.trips === null) {
       fetch(ROOT_URL, {
         method: "GET",
         headers: {
@@ -21,11 +21,9 @@ class App extends Component {
       })
         .then(res => res.json())
         .then(json => {
-            console.log(json)
             if (json.length > 0) {
               this.setState({
-                trips: json,
-                trip_id: json[0]._id})
+                trips: json})
             }
         })
     }
@@ -35,6 +33,20 @@ class App extends Component {
     if (this.state.trips) {
       this.setState({trips: [...this.state.trips, trip]})
     }
+  }
+  editTrip = (newTrip) => {
+    let tripsArray = this.state.trips.map(t => {
+      if (t._id === newTrip._id) {
+        return newTrip
+      }
+      return t
+    })
+    this.setState({trips: tripsArray})
+  }
+
+  deleteTrip = (id) => {
+    let trips = this.state.trips.filter(t => t._id !== id)
+    this.setState({trips: trips})
   }
 
   findTrip = (id) => {
@@ -61,9 +73,14 @@ class App extends Component {
               addTrip={this.addTrip}/>
           </div>
           <div className="twelve wide column">
-            {!this.state.trip_id ? <HomePage /> : <div>
-              <TripInfo trip={this.findTrip(this.state.trip_id)[0]}/>
-            </div>}
+            {!this.state.trip_id ? <HomePage /> : null }
+            {this.state.trip_id && this.state.trips.length > 0 ? <div>
+              <TripInfo
+                trip={this.findTrip(this.state.trip_id)[0]}
+                editTrip={this.editTrip}
+                deleteTrip={this.deleteTrip}
+                changeTripId={this.changeTripId}/>
+            </div> : null}
           </div>
         </div>
       </div>

@@ -32,9 +32,9 @@ export default class NewTripForm extends React.Component {
     })
     .then(response => response.json())
     .then(json => {
+      this.props.addTrip(json)
       this.props.changeTripId(json._id)
       this.props.showHideForm()
-      this.props.addTrip(json)
     })
     .catch(err => console.error(err))
 }
@@ -68,7 +68,7 @@ export default class NewTripForm extends React.Component {
                 type="text"
                 placeholder="Image URL"/>
             </div>
-            <div className="ui button" tabindex="0" onClick= {this.createNewTrip}>
+            <div className="ui button" onClick= {this.createNewTrip}>
               Create Trip
             </div>
           </div>

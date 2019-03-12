@@ -15,16 +15,16 @@ export default class SideBar extends React.Component {
     return (
       <div>
         <div className= "ui inverted vertical menu">
-          <a className="active item"
+          <div className="active item"
             onClick={() => this.props.changeTripId(null)}>
             Home
-          </a>
+          </div>
           {this.props.trips ?
-            this.props.trips.map(t => <a
+            this.props.trips.map(t => <div
               className="active item"
               onClick={() => this.props.changeTripId(t._id)}>
               {t.name}
-            </a>)
+            </div>)
           : null}
         </div>
         <div className="ui blue button" onClick={this.showHideForm}>
@@ -33,7 +33,7 @@ export default class SideBar extends React.Component {
         {this.state.AddTripClicked ? <NewTripForm
           changeTripId={this.props.changeTripId}
           showHideForm={this.showHideForm}
-          addTrip={this.addTrip}/> : null }
+          addTrip={this.props.addTrip}/> : null }
       </div>
     )
   }
