@@ -3,6 +3,7 @@ import { ROOT_URL } from './Config'
 import SideBar from './components/SideBar'
 import HomePage from './components/HomePage'
 import TripInfo from './components/TripInfo'
+import AccommodationInfo from './components/AccommodationInfo'
 
 class App extends Component {
   state = {
@@ -80,6 +81,8 @@ class App extends Component {
                 editTrip={this.editTrip}
                 deleteTrip={this.deleteTrip}
                 changeTripId={this.changeTripId}/>
+              <AccommodationInfo
+                trip_id={this.state.trip_id}/>
             </div> : null}
           </div>
         </div>

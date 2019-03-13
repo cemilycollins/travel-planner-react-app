@@ -15,7 +15,7 @@
 
 .segment {
   float: left;
-  width: inherit;
+  width: 80%;
   overflow: hidden;
 }
 
