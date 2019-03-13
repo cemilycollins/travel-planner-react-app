@@ -3,7 +3,7 @@ import { ROOT_URL } from './Config'
 import SideBar from './components/SideBar'
 import HomePage from './components/HomePage'
 import TripInfo from './components/TripInfo'
-// import AccInfo from './AccInfo'
+import AccInfo from './AccInfo'
 
 class App extends Component {
   state = {
@@ -82,7 +82,10 @@ class App extends Component {
                 deleteTrip={this.deleteTrip}
                 changeTripId={this.changeTripId}/>
             </div> : null}
-            
+            {this.state.trip_id && this.state.trips.length > 0 ? <div>
+              <AccInfo
+                trip_id={this.state.trip_id}/>
+            </div> : null}
           </div>
         </div>
       </div>
