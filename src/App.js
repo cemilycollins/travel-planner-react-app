@@ -3,7 +3,7 @@ import { ROOT_URL } from './Config'
 import SideBar from './components/SideBar'
 import HomePage from './components/HomePage'
 import TripInfo from './components/TripInfo'
-import AccInfo from './AccInfoNew'
+import AccInfo from './AccInfo'
 
 class App extends Component {
   state = {
