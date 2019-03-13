@@ -1,7 +1,4 @@
 {
-  "engines": {
-    "node": "10.x"
-  },
   "name": "travel-planner-react-app",
   "version": "0.1.0",
   "private": true,
