@@ -81,6 +81,8 @@ class App extends Component {
                 editTrip={this.editTrip}
                 deleteTrip={this.deleteTrip}
                 changeTripId={this.changeTripId}/>
+            </div> : null}
+            {this.state.trip_id && this.state.trips.length > 0 ? <div>
               <AccommodationInfo
                 trip_id={this.state.trip_id}/>
             </div> : null}
